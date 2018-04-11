@@ -1,0 +1,14 @@
+<litepal>
+
+    <dbname value="wo_weather" />
+
+    <version value="2" />
+
+    <list>
+        <mapping class="com.example.woweather.db.Province" />
+        <mapping class="com.example.woweather.db.City" />
+        <mapping class="com.example.woweather.db.County" />
+        <mapping class="com.example.woweather.db.Collection" />
+    </list>
+
+</litepal>

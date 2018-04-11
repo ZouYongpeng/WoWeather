@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.woweather.MainActivity">
+
+    <ImageView
+        android:id="@+id/bing_pic_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--添加下滑刷新-->
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!--滚动子布局，里面只能有一个控件，所以一般加 LinearLayout
+                none表示无滚动条，
+                never表示删除listView，viewpager，scrollview等滑动到最后屏幕边缘的辉光-->
+            <ScrollView
+                android:id="@+id/weather_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true">
+
+                    <!--显示城市名和更新时间的标题子布局-->
+                    <include layout="@layout/title"/>
+
+                    <!--当前天气的布局-->
+                    <include layout="@layout/now"/>
+
+                    <!--未来几天天气的布局-->
+                    <include layout="@layout/forecast"/>
+
+                    <!--空气质量信息的布局-->
+                    <include layout="@layout/aqi"/>
+
+                    <!--生活建议信息的布局-->
+                    <include layout="@layout/suggestion"/>
+                </LinearLayout>
+
+            </ScrollView>
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/collect_weather_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/list_bg">
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.DrawerLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/collect_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|end"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_stars_black"
+        app:rippleColor="#fff" /><!---->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/return_choose"
+        android:name="com.example.woweather.ChooseAreaFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        app:rippleColor="#fff"
+        android:src="@drawable/ic_search_red"/>
+
+</FrameLayout>
